@@ -1,0 +1,22 @@
+<%= form_with model: @app, url: "/uploadapp", local: true do |f| %>
+  <div class="field">
+    <h4>Loaderファイル</h4>
+    <%= f.file_field :loader_file %>
+  </div>
+  <div class="field">
+    <h4>Dataファイル</h4>
+    <%= f.file_field :data_file %>
+  </div>
+  <div class="field">
+    <h4>frameworkファイル</h4>
+    <%= f.file_field :framework_file %>
+  </div>
+  <div class="field">
+    <h4>codeファイル</h4>
+    <%= f.file_field :code_file %>
+  </div>
+  <div class="actions">
+    <%= f.submit value: "作成" %>
+  </div>
+<% end %>
+<%= image_url "https://drive.google.com/file/d/1PwCnzXnDo5_drROsz7lAbhvp6IDOe3vj/view?usp=share_link" %>

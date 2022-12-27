@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  loader_file: MyString
+  data_file: MyString
+  framework_file: MyString
+  code_file: MyString
+
+two:
+  loader_file: MyString
+  data_file: MyString
+  framework_file: MyString
+  code_file: MyString
