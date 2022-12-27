@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def top
-    @app = Unity202202App.find(1)
+
   end
 
   def uploadapp

@@ -1,5 +1,5 @@
 <canvas id="unity-canvas" tabindex="-1"></canvas>
-<script src="<%= @app.loader_file.url %>"></script>
+<script src="/webverse.loader.js"></script>
 <script>
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -17,9 +17,9 @@
     }
 
     createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "<%= @app.data_file.url %>",
-        frameworkUrl: "<%= @app.framework_file.url %>>",
-        codeUrl: "<%= @app.code_file.url %>",
+        dataUrl: "/webverse.data",
+        frameworkUrl: "/webverse.framework.js",
+        codeUrl: "/webverse.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "AkioMabuchi",
         productName: "metaverse",
