@@ -1,0 +1,14 @@
+<h1>VRM生成</h1>
+<%= form_with model: Vrm.new, url: vrms_path, local: true do |f| %>
+  <div class="field">
+    <h4>VRM名</h4>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <h4>VRMファイル</h4>
+    <%= f.file_field :body, accept: "vrm" %>
+  </div>
+  <div class="actions">
+    <%= f.submit value: "ログイン" %>
+  </div>
+<% end %>

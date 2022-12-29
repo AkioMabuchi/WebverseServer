@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   root "home#top"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get "/uploadapp", to: "home#uploadapp"
-  post "/uploadapp", to: "home#create_app"
-  patch "/uploadapp", to: "home#update_app"
+
+  resources :users, except: [:new, :edit]
+  resources :vrms
+
+  get "/login", to: "users#login"
+  get "/signup", to: "users#signup"
+  get "/settings", to: "users#edit"
+  patch "/settings", to: "users#update"
+  post "/login", to: "home#new_session"
+
+  post "/#{Rails.application.credentials[:webverse][:api_key]}/login", to: "home#external_new_session"
+  post "/#{Rails.application.credentials[:webverse][:api_key]}/session", to: "home#external_fetch_session"
 end
