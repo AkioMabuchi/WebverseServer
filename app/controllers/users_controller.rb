@@ -17,13 +17,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    user.token = generate_token 64
-    if user.save
-      redirect_to root_path
-    else
-      redirect_to signup_path
-    end
+
+    #user = User.new(user_params)
+    #user.token = generate_token 64
+    #if user.save
+    #  redirect_to root_path
+    #else
+    #  redirect_to signup_path
+    #end
+    redirect_to signup_path
   end
 
   def update
