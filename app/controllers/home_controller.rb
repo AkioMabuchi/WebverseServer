@@ -35,38 +35,49 @@ class HomeController < ApplicationController
   end
 
   def external_new_session
+    r = {
+      success: false,
+      userToken: "",
+      userName: "",
+      userVrms: []
+    }
     if params[:secret] == Rails.application.credentials[:webverse][:api_secret]
-      user = User.find_by(address: params[:address])
+      user = User.find_by_address(params[:address])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        render json: {
-          name: user.name
+        vrms = []
+        user.vrms.each do |vrm|
+          vrms.append({
+                        token: vrm.token,
+                        name: vrm.name
+                      })
+        end
+        r = {
+          success: true,
+          userToken: user.token,
+          userName: user.name,
+          userVrms: vrms
         }
-      else
-        render json: false
       end
-
-    else
-      render json: false
     end
+
+    render json: r
   end
 
   def external_fetch_session
+    r = {
+      success: false,
+      userToken: "",
+      userName: "",
+      userVrms: []
+    }
     if params[:secret] == Rails.application.credentials[:webverse][:api_secret]
       user = User.find_by_id(session[:user_id])
       if user
-        render json: {
-          success: true,
-          token: user.token,
-          name: user.name,
-          image: user.image.url,
-        }
-      else
-        render json: false
+        r[:success] = true
       end
-    else
-      render json: false
     end
+    render json: r
   end
 
   private
