@@ -48,7 +48,7 @@ class HomeController < ApplicationController
         vrms = []
         user.vrms.each do |vrm|
           vrms.append({
-                        token: vrm.token,
+                        token: vrm.body.url,
                         name: vrm.name
                       })
         end
